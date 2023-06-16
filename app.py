@@ -8,10 +8,23 @@ app = Flask(__name__)
 def home(): 
     return render_template('home.html')
 
-
-
 @app.route('/login', methods=['GET', 'POST']) 
 def login(): 
+
+    realusername = "Aiden"
+    realpassword = "password"
+
+    username = ""
+    password = ""
+
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+    if username == realusername and password == realpassword:
+        return "Correct Password"
+    else :
+        return "Wrong"
 
     return render_template('login.html') 
 
